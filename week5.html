@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 5 | Consumer Behaviour Influences</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #1e40af;
+      --secondary: #3b82f6;
+      --bg-light: #f1f5f9;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --white: #ffffff;
+      --shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.1);
+      --sidebar-width: 260px;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-main);
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* PERMANENT SIDEBAR */
+    .sidebar {
+      width: var(--sidebar-width);
+      background: var(--primary);
+      color: var(--white);
+      padding: 2rem 1.5rem;
+      position: fixed;
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    .sidebar h2 { font-size: 1.2rem; margin-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem; }
+    
+    .nav-item {
+      display: flex; align-items: center; padding: 0.8rem 1rem;
+      color: rgba(255,255,255,0.8); text-decoration: none;
+      border-radius: 8px; margin-bottom: 0.5rem; transition: 0.3s;
+    }
+    .nav-item:hover, .nav-item.active { background: rgba(255,255,255,0.1); color: white; }
+    .nav-item i { margin-right: 12px; width: 20px; }
+
+    /* MAIN CONTENT */
+    .main-content {
+      margin-left: var(--sidebar-width);
+      flex: 1;
+      padding: 3rem;
+    }
+
+    .header-section { margin-bottom: 2.5rem; }
+    .header-section .module-tag { font-size: 0.8rem; font-weight: 800; color: var(--secondary); text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
+    .header-section h1 { font-size: 2.2rem; color: var(--primary); }
+
+    .content-card {
+      background: var(--white);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
+    }
+
+    .content-card h2 { color: var(--primary); margin-bottom: 1.2rem; font-size: 1.4rem; display: flex; align-items: center; gap: 12px; }
+    .content-card p { color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem; }
+
+    /* CATEGORY GRID */
+    .influence-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .influence-box {
+      background: var(--bg-light);
+      padding: 1.5rem;
+      border-radius: 12px;
+      border-top: 4px solid var(--secondary);
+    }
+
+    .influence-box h4 { color: var(--primary); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 8px; }
+    .influence-box ul { list-style: none; font-size: 0.9rem; color: var(--text-muted); }
+    .influence-box li { margin-bottom: 5px; }
+
+    .example-callout {
+      background: #eff6ff;
+      border-left: 5px solid var(--secondary);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+
+    .nav-buttons { display: flex; justify-content: space-between; margin-top: 3rem; }
+    .btn-nav {
+      text-decoration: none; padding: 0.8rem 1.8rem; background: var(--white);
+      color: var(--primary); border-radius: 10px; font-weight: bold;
+      box-shadow: var(--shadow); transition: 0.3s;
+    }
+    .btn-nav:hover { background: var(--primary); color: white; }
+  </style>
+</head>
+<body>
+
+  <aside class="sidebar">
+    <h2>M&C Strategy</h2>
+    <a href="index.html" class="nav-item"><i class="fas fa-th-large"></i> <span>Dashboard</span></a>
+    <a href="week1.html" class="nav-item"><i class="fas fa-bullhorn"></i> <span>Week 1</span></a>
+    <a href="week2.html" class="nav-item"><i class="fas fa-chart-line"></i> <span>Week 2</span></a>
+    <a href="week3.html" class="nav-item"><i class="fas fa-users"></i> <span>Week 3</span></a>
+    <a href="week4.html" class="nav-item"><i class="fas fa-file-signature"></i> <span>Week 4</span></a>
+    <a href="week5.html" class="nav-item active"><i class="fas fa-brain"></i> <span>Week 5</span></a>
+  </aside>
+
+  <main class="main-content">
+    <header class="header-section">
+      <span class="module-tag">Module 05</span>
+      <h1>Consumer Behaviour Influences</h1>
+    </header>
+
+    <section class="content-card">
+      <h2><i class="fas fa-info-circle"></i> Understanding the "Why"</h2>
+      <p>
+        Consumer behaviour is never random. It is shaped by a complex interplay of internal and external forces that dictate how messages are received and processed.
+      </p>
+      
+    </section>
+
+    <section class="content-card">
+      <h2><i class="fas fa-filter"></i> Core Influencing Factors</h2>
+      <div class="influence-grid">
+        <div class="influence-box">
+          <h4><i class="fas fa-globe"></i> Cultural</h4>
+          <ul>
+            <li>Core Shared Values</li>
+            <li>Subculture Beliefs</li>
+            <li>Social Class Status</li>
+          </ul>
+        </div>
+        <div class="influence-box">
+          <h4><i class="fas fa-users"></i> Social</h4>
+          <ul>
+            <li>Reference Groups</li>
+            <li>Family Influence</li>
+            <li>Opinion Leaders</li>
+          </ul>
+        </div>
+        <div class="influence-box">
+          <h4><i class="fas fa-user"></i> Personal</h4>
+          <ul>
+            <li>Life-cycle Stage</li>
+            <li>Lifestyle (AIO)</li>
+            <li>Economic Situation</li>
+          </ul>
+        </div>
+        <div class="influence-box">
+          <h4><i class="fas fa-lightbulb"></i> Psych.</h4>
+          <ul>
+            <li>Motivation (Maslow)</li>
+            <li>Selective Perception</li>
+            <li>Learning & Memory</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-card">
+      <h2><i class="fas fa-magnifying-glass"></i> Strategic Consumer Insight</h2>
+      <p>An insight is the "Aha!" moment where you understand the underlying emotional truth behind a consumer's action.</p>
+      <div class="example-callout">
+        <strong><i class="fas fa-quote-left"></i> Insight Example:</strong><br>
+        Consumers don't just buy a gym membership for health; they buy it for the <strong>social validation</strong> and the feeling of belonging to a "driven" community.
+      </div>
+    </section>
+
+    <div class="nav-buttons">
+      <a href="week4.html" class="btn-nav"><i class="fas fa-chevron-left"></i> Week 4</a>
+      <a href="week6.html" class="btn-nav">Week 6 <i class="fas fa-chevron-right"></i></a>
+    </div>
+  </main>
+
+</body>
+</html>

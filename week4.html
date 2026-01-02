@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 4 | Brand Analysis Assignment</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #1e40af;
+      --secondary: #3b82f6;
+      --bg-light: #f1f5f9;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --white: #ffffff;
+      --shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.1);
+      --sidebar-width: 260px;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-main);
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* PERMANENT SIDEBAR */
+    .sidebar {
+      width: var(--sidebar-width);
+      background: var(--primary);
+      color: var(--white);
+      padding: 2rem 1.5rem;
+      position: fixed;
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    .sidebar h2 { font-size: 1.2rem; margin-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem; }
+    
+    .nav-item {
+      display: flex; align-items: center; padding: 0.8rem 1rem;
+      color: rgba(255,255,255,0.8); text-decoration: none;
+      border-radius: 8px; margin-bottom: 0.5rem; transition: 0.3s;
+    }
+    .nav-item:hover, .nav-item.active { background: rgba(255,255,255,0.1); color: white; }
+    .nav-item i { margin-right: 12px; width: 20px; }
+
+    /* MAIN CONTENT */
+    .main-content {
+      margin-left: var(--sidebar-width);
+      flex: 1;
+      padding: 3rem;
+    }
+
+    .header-section { margin-bottom: 2.5rem; }
+    .header-section .module-tag { font-size: 0.8rem; font-weight: 800; color: #e11d48; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
+    .header-section h1 { font-size: 2.2rem; color: var(--primary); }
+
+    .content-card {
+      background: var(--white);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
+    }
+
+    .content-card h2 { color: var(--primary); margin-bottom: 1.2rem; font-size: 1.4rem; display: flex; align-items: center; gap: 12px; }
+    
+    /* ASSIGNMENT STYLES */
+    .task-list { list-style: none; }
+    .task-item {
+      background: var(--bg-light);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 500;
+    }
+    .task-item i { color: var(--secondary); }
+
+    .info-banner {
+      background: #eff6ff;
+      border-left: 5px solid var(--secondary);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+    }
+
+    /* TABLE STYLE */
+    .table-container { overflow-x: auto; margin-top: 1.5rem; }
+    table { width: 100%; border-collapse: collapse; background: white; }
+    th { background: #f8fafc; color: var(--primary); text-align: left; padding: 1rem; border-bottom: 2px solid #e2e8f0; }
+    td { padding: 1rem; border-bottom: 1px solid #f1f5f9; color: var(--text-muted); }
+
+    .nav-buttons { display: flex; justify-content: space-between; margin-top: 3rem; }
+    .btn-nav {
+      text-decoration: none; padding: 0.8rem 1.8rem; background: var(--white);
+      color: var(--primary); border-radius: 10px; font-weight: bold;
+      box-shadow: var(--shadow); transition: 0.3s;
+    }
+    .btn-nav:hover { background: var(--primary); color: white; }
+  </style>
+</head>
+<body>
+
+  <aside class="sidebar">
+    <h2>M&C Strategy</h2>
+    <a href="index.html" class="nav-item"><i class="fas fa-th-large"></i> <span>Dashboard</span></a>
+    <a href="week1.html" class="nav-item"><i class="fas fa-bullhorn"></i> <span>Week 1</span></a>
+    <a href="week2.html" class="nav-item"><i class="fas fa-chart-line"></i> <span>Week 2</span></a>
+    <a href="week3.html" class="nav-item"><i class="fas fa-users"></i> <span>Week 3</span></a>
+    <a href="week4.html" class="nav-item active"><i class="fas fa-file-signature"></i> <span>Week 4</span></a>
+  </aside>
+
+  <main class="main-content">
+    <header class="header-section">
+      <span class="module-tag">Practical Assessment</span>
+      <h1>Brand Analysis Assignment</h1>
+    </header>
+
+    <section class="content-card">
+      <h2><i class="fas fa-clipboard-list"></i> Assignment Overview</h2>
+      <div class="info-banner">
+        <strong><i class="fas fa-users"></i> Group Presentation</strong><br>
+        Apply IMC and Consumer Behaviour frameworks to a real-world brand of your choice.
+      </div>
+      <p>The goal is to move beyond simple description and provide <strong>strategic analysis</strong> of how a brand maintains message consistency.</p>
+    </section>
+
+    <section class="content-card">
+      <h2><i class="fas fa-tasks"></i> Project Requirements</h2>
+      <ul class="task-list">
+        <li class="task-item"><i class="fas fa-check-square"></i> Select a local or international brand</li>
+        <li class="task-item"><i class="fas fa-check-square"></i> Define the Target Market Persona</li>
+        <li class="task-item"><i class="fas fa-check-square"></i> Complete a 4Ps Marketing Mix Audit</li>
+        <li class="task-item"><i class="fas fa-check-square"></i> Map the Consumer Decision-Making Process</li>
+        <li class="task-item"><i class="fas fa-check-square"></i> Present three key "Consumer Insights"</li>
+      </ul>
+    </section>
+
+    <section class="content-card">
+      <h2><i class="fas fa-project-diagram"></i> IMC Tools Audit</h2>
+      <p>Evaluate the synergy between these specific communication channels:</p>
+      
+      
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Channel</th>
+              <th>Evaluation Metric</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Advertising</strong></td>
+              <td>Visual consistency across TV and Digital</td>
+            </tr>
+            <tr>
+              <td><strong>Social Media</strong></td>
+              <td>Engagement style on TikTok vs Instagram</td>
+            </tr>
+            <tr>
+              <td><strong>PR & Influencers</strong></td>
+              <td>Credibility of brand ambassadors</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="content-card">
+      <h2><i class="fas fa-star"></i> Evaluation Criteria</h2>
+      <ul style="padding-left: 1.5rem; color: var(--text-muted); line-height: 2;">
+        <li><strong>Conceptual Depth:</strong> Correct application of IMC theory.</li>
+        <li><strong>Consistency Check:</strong> Evidence of unified brand messaging.</li>
+        <li><strong>Presentation Quality:</strong> Visual clarity and professional delivery.</li>
+      </ul>
+    </section>
+
+    <div class="nav-buttons">
+      <a href="week3.html" class="btn-nav"><i class="fas fa-chevron-left"></i> Week 3</a>
+      <a href="week5.html" class="btn-nav">Week 5 <i class="fas fa-chevron-right"></i></a>
+    </div>
+  </main>
+
+</body>
+</html>

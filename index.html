@@ -37,9 +37,15 @@
       padding: 2rem 1.5rem;
       position: fixed;
       height: 100vh;
+      overflow-y: auto;
     }
 
-    .sidebar h2 { font-size: 1.2rem; margin-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem; }
+    .sidebar h2 { 
+      font-size: 1.2rem; 
+      margin-bottom: 2rem; 
+      border-bottom: 1px solid rgba(255,255,255,0.1); 
+      padding-bottom: 1rem; 
+    }
     
     .nav-item {
       display: flex;
@@ -50,10 +56,26 @@
       border-radius: 8px;
       margin-bottom: 0.5rem;
       transition: 0.3s;
+      cursor: pointer;
     }
 
     .nav-item i { margin-right: 12px; width: 20px; }
     .nav-item:hover, .nav-item.active { background: rgba(255,255,255,0.1); color: white; }
+
+    .nav-section {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .nav-section-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 0.5rem;
+      padding: 0 1rem;
+    }
 
     /* MAIN CONTENT AREA */
     .main-content {
@@ -65,6 +87,76 @@
     .header-section { margin-bottom: 3rem; }
     .header-section h1 { font-size: 2.5rem; color: var(--primary); }
     .header-section p { color: var(--text-muted); font-size: 1.1rem; }
+
+    /* CONTENT SECTION */
+    .content-section {
+      background: var(--white);
+      padding: 3rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
+    }
+
+    .content-section h2 {
+      color: var(--primary);
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .content-section h3 {
+      color: var(--text-main);
+      font-size: 1.3rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .content-section p {
+      line-height: 1.8;
+      margin-bottom: 1rem;
+      color: var(--text-main);
+    }
+
+    .content-section ul, .content-section ol {
+      margin-left: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .content-section li {
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+    }
+
+    /* NAVIGATION BUTTONS */
+    .session-nav {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 3rem;
+      gap: 1rem;
+    }
+
+    .nav-button {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 1.5rem;
+      background: var(--primary);
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s;
+      font-weight: 500;
+    }
+
+    .nav-button:hover {
+      background: var(--secondary);
+      transform: translateY(-2px);
+    }
+
+    .nav-button.disabled {
+      background: #cbd5e1;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
 
     /* TOPIC GRID */
     .topics-grid {
@@ -85,6 +177,7 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      cursor: pointer;
     }
 
     .topic-card:hover {
@@ -121,6 +214,7 @@
     @media (max-width: 768px) {
       .sidebar { display: none; }
       .main-content { margin-left: 0; padding: 1.5rem; }
+      .session-nav { flex-direction: column; }
     }
   </style>
 </head>
@@ -128,79 +222,381 @@
 
   <aside class="sidebar">
     <h2>M&C Strategy</h2>
-    <a href="index.html" class="nav-item active"><i class="fas fa-th-large"></i> Dashboard</a>
-    <a href="week5.html" class="nav-item"><i class="fas fa-tasks"></i> Assignments</a>
-    <a href="#" class="nav-item"><i class="fas fa-file-pdf"></i> Resources</a>
-    <a href="#" class="nav-item"><i class="fas fa-calendar-alt"></i> Schedule</a>
+    <div class="nav-item active" onclick="showDashboard()">
+      <i class="fas fa-th-large"></i> Dashboard
+    </div>
+    
+    <div class="nav-section">
+      <div class="nav-section-title">Course Sessions</div>
+      <div class="nav-item" onclick="showSession(1)">
+        <i class="fas fa-bullhorn"></i> Session 1: 4 Ps & IMC
+      </div>
+      <div class="nav-item" onclick="showSession(2)">
+        <i class="fas fa-chart-line"></i> Session 2: Situation Analysis
+      </div>
+      <div class="nav-item" onclick="showSession(3)">
+        <i class="fas fa-users"></i> Session 3: Consumer Behaviour
+      </div>
+      <div class="nav-item" onclick="showSession(4)">
+        <i class="fas fa-brain"></i> Session 4: CB Influences
+      </div>
+      <div class="nav-item" onclick="showSession(5)">
+        <i class="fas fa-crosshairs"></i> Session 5: Comm. Objectives
+      </div>
+      <div class="nav-item" onclick="showSession(6)">
+        <i class="fas fa-chess-knight"></i> Session 6: Brand Positioning
+      </div>
+      <div class="nav-item" onclick="showSession(7)">
+        <i class="fas fa-share-nodes"></i> Session 7: Digital WOM
+      </div>
+      <div class="nav-item" onclick="showSession(8)">
+        <i class="fas fa-award"></i> Session 8: Brand Assignment
+      </div>
+    </div>
   </aside>
 
   <main class="main-content">
-    <header class="header-section">
-      <p>Academic Year 2026</p>
-      <h1>Marketing and Communication Strategies</h1>
-      <p>Integrated Frameworks & Digital Influence</p>
-    </header>
+    <!-- DASHBOARD VIEW -->
+    <div id="dashboard" class="view">
+      <header class="header-section">
+        <p>Academic Year 2026</p>
+        <h1>Marketing and Communication Strategies</h1>
+        <p>Integrated Frameworks & Digital Influence</p>
+      </header>
 
-    <div class="topics-grid">
-      
-      <a href="week1.html" class="topic-card">
-        <div class="badge">Week 1</div>
-        <div class="icon-wrapper"><i class="fas fa-bullhorn"></i></div>
-        <h3>The 4 Ps & IMC</h3>
-        <p>Foundations of marketing mix and integrated communication principles.</p>
-      </a>
+      <div class="topics-grid">
+        
+        <div class="topic-card" onclick="showSession(1)">
+          <div class="badge">Session 1</div>
+          <div class="icon-wrapper"><i class="fas fa-bullhorn"></i></div>
+          <h3>The 4 Ps & IMC</h3>
+          <p>Foundations of marketing mix and integrated communication principles.</p>
+        </div>
 
-      <a href="week2.html" class="topic-card">
-        <div class="badge">Week 2</div>
-        <div class="icon-wrapper"><i class="fas fa-chart-line"></i></div>
-        <h3>Situation Analysis</h3>
-        <p>SWOT, PESTEL, and environmental scanning techniques.</p>
-      </a>
+        <div class="topic-card" onclick="showSession(2)">
+          <div class="badge">Session 2</div>
+          <div class="icon-wrapper"><i class="fas fa-chart-line"></i></div>
+          <h3>Situation Analysis</h3>
+          <p>SWOT, PESTEL, and environmental scanning techniques.</p>
+        </div>
 
-      <a href="week3.html" class="topic-card">
-        <div class="badge">Week 3</div>
-        <div class="icon-wrapper"><i class="fas fa-users"></i></div>
-        <h3>Consumer Behaviour</h3>
-        <p>The internal psychological processes of consumer decision making.</p>
-      </a>
+        <div class="topic-card" onclick="showSession(3)">
+          <div class="badge">Session 3</div>
+          <div class="icon-wrapper"><i class="fas fa-users"></i></div>
+          <h3>Consumer Behaviour</h3>
+          <p>The internal psychological processes of consumer decision making.</p>
+        </div>
 
-      <a href="week4.html" class="topic-card">
-        <div class="badge">Week 4</div>
-        <div class="icon-wrapper"><i class="fas fa-brain"></i></div>
-        <h3>CB Influences</h3>
-        <p>Social, cultural, and environmental impacts on the buyer.</p>
-      </a>
+        <div class="topic-card" onclick="showSession(4)">
+          <div class="badge">Session 4</div>
+          <div class="icon-wrapper"><i class="fas fa-brain"></i></div>
+          <h3>CB Influences</h3>
+          <p>Social, cultural, and environmental impacts on the buyer.</p>
+        </div>
 
-      <a href="week5.html" class="topic-card">
-        <div class="badge">Week 5</div>
-        <div class="icon-wrapper"><i class="fas fa-award"></i></div>
-        <h3>Brand Assignment</h3>
-        <p>Project guidelines for practical brand evaluation.</p>
-      </a>
+        <div class="topic-card" onclick="showSession(5)">
+          <div class="badge">Session 5</div>
+          <div class="icon-wrapper"><i class="fas fa-crosshairs"></i></div>
+          <h3>Comm. Objectives</h3>
+          <p>Setting SMART goals and establishing campaign KPIs.</p>
+        </div>
 
-      <a href="week7.html" class="topic-card">
-        <div class="badge">Week 7</div>
-        <div class="icon-wrapper"><i class="fas fa-crosshairs"></i></div>
-        <h3>Comm. Objectives</h3>
-        <p>Setting SMART goals and establishing campaign KPIs.</p>
-      </a>
+        <div class="topic-card" onclick="showSession(6)">
+          <div class="badge">Session 6</div>
+          <div class="icon-wrapper"><i class="fas fa-chess-knight"></i></div>
+          <h3>Brand Positioning</h3>
+          <p>Perceptual mapping and competitive differentiation strategy.</p>
+        </div>
 
-      <a href="week8.html" class="topic-card">
-        <div class="badge">Week 8</div>
-        <div class="icon-wrapper"><i class="fas fa-chess-knight"></i></div>
-        <h3>Brand Positioning</h3>
-        <p>Perceptual mapping and competitive differentiation strategy.</p>
-      </a>
+        <div class="topic-card" onclick="showSession(7)">
+          <div class="badge">Session 7</div>
+          <div class="icon-wrapper"><i class="fas fa-share-nodes"></i></div>
+          <h3>Digital WOM</h3>
+          <p>Electronic Word of Mouth and influencer marketing dynamics.</p>
+        </div>
 
-      <a href="week9.html" class="topic-card">
-        <div class="badge">Week 9</div>
-        <div class="icon-wrapper"><i class="fas fa-share-nodes"></i></div>
-        <h3>Digital WOM</h3>
-        <p>Electronic Word of Mouth and influencer marketing dynamics.</p>
-      </a>
+        <div class="topic-card" onclick="showSession(8)">
+          <div class="badge">Session 8</div>
+          <div class="icon-wrapper"><i class="fas fa-award"></i></div>
+          <h3>Brand Assignment</h3>
+          <p>Project guidelines for practical brand evaluation.</p>
+        </div>
 
+      </div>
     </div>
+
+    <!-- SESSION VIEWS -->
+    <div id="session1" class="view" style="display:none;">
+      <header class="header-section">
+        <p>Session 1</p>
+        <h1>The 4 Ps & IMC</h1>
+        <p>Foundations of marketing mix and integrated communication principles</p>
+      </header>
+
+      <div class="content-section">
+        <h2>Marketing Mix: The 4 Ps</h2>
+        <p>The marketing mix represents the tactical toolkit that marketers use to implement their strategy and achieve their objectives in the target market.</p>
+        
+        <h3>Product</h3>
+        <p>The goods or services offered to satisfy customer needs. This includes design, features, quality, branding, and packaging.</p>
+        
+        <h3>Price</h3>
+        <p>The amount customers pay for the product. Pricing strategies must consider costs, competition, perceived value, and market positioning.</p>
+        
+        <h3>Place</h3>
+        <p>Distribution channels and locations where products are available. This encompasses logistics, inventory management, and retail strategy.</p>
+        
+        <h3>Promotion</h3>
+        <p>Communication strategies to inform, persuade, and remind customers. Includes advertising, PR, sales promotion, and personal selling.</p>
+
+        <h2>Integrated Marketing Communications (IMC)</h2>
+        <p>IMC is a strategic approach that coordinates all promotional activities to deliver a consistent, unified message across all channels and touchpoints.</p>
+      </div>
+
+      <div class="session-nav">
+        <a href="#" class="nav-button disabled">
+          <i class="fas fa-arrow-left"></i> Previous
+        </a>
+        <a href="week2.html" class="nav-button">
+          Next <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <div id="session2" class="view" style="display:none;">
+      <header class="header-section">
+        <p>Session 2</p>
+        <h1>Situation Analysis</h1>
+        <p>SWOT, PESTEL, and environmental scanning techniques</p>
+      </header>
+
+      <div class="content-section">
+        <h2>Environmental Scanning</h2>
+        <p>Situation analysis involves systematically examining internal and external factors that impact marketing strategy.</p>
+        
+        <h3>SWOT Analysis</h3>
+        <p>A framework for identifying Strengths, Weaknesses, Opportunities, and Threats to inform strategic planning.</p>
+        
+        <h3>PESTEL Analysis</h3>
+        <p>Examines macro-environmental factors: Political, Economic, Social, Technological, Environmental, and Legal influences on the business.</p>
+      </div>
+
+      <div class="session-nav">
+        <a href="week1.html" class="nav-button">
+          <i class="fas fa-arrow-left"></i> Previous
+        </a>
+        <a href="week3.html" class="nav-button">
+          Next <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <div id="session3" class="view" style="display:none;">
+      <header class="header-section">
+        <p>Session 3</p>
+        <h1>Consumer Behaviour</h1>
+        <p>The internal psychological processes of consumer decision making</p>
+      </header>
+
+      <div class="content-section">
+        <h2>Understanding Consumer Psychology</h2>
+        <p>Consumer behaviour examines how individuals make decisions about purchasing, using, and disposing of products and services.</p>
+        
+        <h3>Decision-Making Process</h3>
+        <p>The consumer journey typically involves: problem recognition, information search, evaluation of alternatives, purchase decision, and post-purchase behaviour.</p>
+        
+        <h3>Psychological Factors</h3>
+        <p>Internal influences including motivation, perception, learning, attitudes, and personality shape consumer choices.</p>
+      </div>
+
+      <div class="session-nav">
+        <a href="week2.html" class="nav-button">
+          <i class="fas fa-arrow-left"></i> Previous
+        </a>
+        <a href="week4.html" class="nav-button">
+          Next <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <div id="session4" class="view" style="display:none;">
+      <header class="header-section">
+        <p>Session 4</p>
+        <h1>Consumer Behaviour Influences</h1>
+        <p>Social, cultural, and environmental impacts on the buyer</p>
+      </header>
+
+      <div class="content-section">
+        <h2>External Influences on Consumer Behaviour</h2>
+        <p>Beyond internal psychology, consumers are shaped by their social context and environment.</p>
+        
+        <h3>Cultural Factors</h3>
+        <p>Culture, subculture, and social class significantly influence values, preferences, and consumption patterns.</p>
+        
+        <h3>Social Factors</h3>
+        <p>Reference groups, family, and social roles impact purchasing decisions and brand preferences.</p>
+        
+        <h3>Situational Factors</h3>
+        <p>Physical surroundings, time pressure, and purchase context affect consumer choices.</p>
+      </div>
+
+      <div class="session-nav">
+        <a href="week3.html" class="nav-button">
+          <i class="fas fa-arrow-left"></i> Previous
+        </a>
+        <a href="week5.html" class="nav-button">
+          Next <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <div id="session5" class="view" style="display:none;">
+      <header class="header-section">
+        <p>Session 5</p>
+        <h1>Communication Objectives</h1>
+        <p>Setting SMART goals and establishing campaign KPIs</p>
+      </header>
+
+      <div class="content-section">
+        <h2>Strategic Goal Setting</h2>
+        <p>Effective marketing communications begin with clear, measurable objectives that align with business goals.</p>
+        
+        <h3>SMART Objectives</h3>
+        <p>Goals should be Specific, Measurable, Achievable, Relevant, and Time-bound to ensure accountability and success.</p>
+        
+        <h3>Key Performance Indicators (KPIs)</h3>
+        <p>Metrics that track progress toward objectives, including reach, engagement, conversion, and brand awareness measures.</p>
+        
+        <h3>Communication Hierarchy</h3>
+        <p>Objectives typically progress through awareness, knowledge, liking, preference, conviction, and purchase stages.</p>
+      </div>
+
+      <div class="session-nav">
+        <a href="week4.html" class="nav-button">
+          <i class="fas fa-arrow-left"></i> Previous
+        </a>
+        <a href="week6.html" class="nav-button">
+          Next <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <div id="session6" class="view" style="display:none;">
+      <header class="header-section">
+        <p>Session 6</p>
+        <h1>Brand Positioning</h1>
+        <p>Perceptual mapping and competitive differentiation strategy</p>
+      </header>
+
+      <div class="content-section">
+        <h2>Strategic Brand Positioning</h2>
+        <p>Positioning defines how a brand occupies a distinctive place in the minds of target customers relative to competitors.</p>
+        
+        <h3>Perceptual Mapping</h3>
+        <p>Visual tools that plot brands on key attribute dimensions to identify competitive space and positioning opportunities.</p>
+        
+        <h3>Differentiation Strategies</h3>
+        <p>Creating unique value propositions based on product features, quality, service, innovation, or emotional benefits.</p>
+        
+        <h3>Positioning Statement</h3>
+        <p>A concise declaration that articulates the target audience, frame of reference, point of difference, and reason to believe.</p>
+      </div>
+
+      <div class="session-nav">
+        <a href="week5.html" class="nav-button">
+          <i class="fas fa-arrow-left"></i> Previous
+        </a>
+        <a href="week7.html" class="nav-button">
+          Next <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <div id="session7" class="view" style="display:none;">
+      <header class="header-section">
+        <p>Session 7</p>
+        <h1>Digital Word of Mouth</h1>
+        <p>Electronic Word of Mouth and influencer marketing dynamics</p>
+      </header>
+
+      <div class="content-section">
+        <h2>The Power of eWOM</h2>
+        <p>Electronic word of mouth represents consumer-to-consumer communication through digital channels, amplifying traditional word of mouth at unprecedented scale.</p>
+        
+        <h3>Social Influence</h3>
+        <p>Online reviews, social media posts, and user-generated content significantly impact brand perception and purchase decisions.</p>
+        
+        <h3>Influencer Marketing</h3>
+        <p>Partnering with content creators who have established credibility and audiences to amplify brand messages authentically.</p>
+        
+        <h3>Managing Online Reputation</h3>
+        <p>Strategies for monitoring, responding to, and cultivating positive digital conversations about brands.</p>
+      </div>
+
+      <div class="session-nav">
+        <a href="week6.html" class="nav-button">
+          <i class="fas fa-arrow-left"></i> Previous
+        </a>
+        <a href="week8.html" class="nav-button">
+          Next <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <div id="session8" class="view" style="display:none;">
+      <header class="header-section">
+        <p>Session 8</p>
+        <h1>Brand Assignment</h1>
+        <p>Project guidelines for practical brand evaluation</p>
+      </header>
+
+      <div class="content-section">
+        <h2>Course Project Overview</h2>
+        <p>Apply the frameworks and concepts learned throughout the course to analyze a real brand's marketing and communication strategies.</p>
+        
+        <h3>Project Components</h3>
+        <p>Your analysis should include situation analysis, consumer insights, positioning strategy, communication objectives, and tactical recommendations.</p>
+        
+        <h3>Deliverables</h3>
+        <p>Submit a comprehensive written report and prepare a presentation that demonstrates strategic thinking and practical application of course concepts.</p>
+        
+        <h3>Evaluation Criteria</h3>
+        <p>Projects will be assessed on analytical depth, strategic insight, creativity, practical feasibility, and professional presentation quality.</p>
+      </div>
+
+      <div class="session-nav">
+        <a href="week7.html" class="nav-button">
+          <i class="fas fa-arrow-left"></i> Previous
+        </a>
+        <a href="#" class="nav-button disabled">
+          Next <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
   </main>
+
+  <script>
+    // Mapping sessions to actual file names
+    const sessionFiles = {
+      1: 'week1.html',
+      2: 'week2.html',
+      3: 'week3.html',
+      4: 'week4.html',
+      5: 'week5.html',
+      6: 'week6.html',
+      7: 'week7.html',
+      8: 'week8.html'
+    };
+
+    function showDashboard() {
+      window.location.href = 'index.html';
+    }
+
+    function showSession(sessionNum) {
+      window.location.href = sessionFiles[sessionNum];
+    }
+  </script>
 
 </body>
 </html>
